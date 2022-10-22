@@ -10,14 +10,15 @@
         android:layout_width="@dimen/avatar_size"
         android:layout_height="@dimen/avatar_size"
         android:layout_margin="@dimen/margin_default"
+        android:src="@drawable/ic_default_avatar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_default_avatar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/userName"
+        style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_large"
@@ -32,7 +33,7 @@
         android:layout_width="@dimen/indicator_size"
         android:layout_height="@dimen/indicator_size"
         android:layout_marginStart="@dimen/margin_small"
-        android:background="@drawable/background_indicator_active"
+        android:background="@drawable/background_indicator_inactive"
         app:layout_constraintBottom_toBottomOf="@id/userName"
         app:layout_constraintStart_toEndOf="@id/userName"
         app:layout_constraintTop_toTopOf="@id/userName" />
@@ -40,6 +41,7 @@
 
     <TextView
         android:id="@+id/userEmail"
+        style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
@@ -47,4 +49,13 @@
         app:layout_constraintStart_toStartOf="@+id/userName"
         app:layout_constraintTop_toBottomOf="@id/userName"
         tools:text="email@email.com" />
+
+    <View
+        android:layout_width="@dimen/left_chevron_size"
+        android:layout_height="@dimen/left_chevron_size"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:background="@drawable/ic_chevron_right"
+        app:layout_constraintBottom_toBottomOf="@id/userAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/userAvatar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

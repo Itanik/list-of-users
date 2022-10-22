@@ -5,4 +5,5 @@
     <dimen name="margin_large">26dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="indicator_size">6dp</dimen>
+    <dimen name="left_chevron_size">20dp</dimen>
 </resources>
