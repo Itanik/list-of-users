@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Default margin sizes -->
     <dimen name="margin_default">12dp</dimen>
-    <dimen name="avatar_size">60dp</dimen>
-    <dimen name="margin_large">26dp</dimen>
     <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_large">26dp</dimen>
+
+    <!-- Screen specific dimens -->
+    <dimen name="user_details_margin">@dimen/margin_default</dimen>
+    <dimen name="avatar_size">60dp</dimen>
     <dimen name="indicator_size">6dp</dimen>
     <dimen name="left_chevron_size">20dp</dimen>
 </resources>

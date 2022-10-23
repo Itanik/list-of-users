@@ -33,7 +33,7 @@
         android:layout_width="@dimen/indicator_size"
         android:layout_height="@dimen/indicator_size"
         android:layout_marginStart="@dimen/margin_small"
-        android:background="@drawable/background_indicator_inactive"
+        android:background="@drawable/ic_red_circle"
         app:layout_constraintBottom_toBottomOf="@id/userName"
         app:layout_constraintStart_toEndOf="@id/userName"
         app:layout_constraintTop_toTopOf="@id/userName" />
