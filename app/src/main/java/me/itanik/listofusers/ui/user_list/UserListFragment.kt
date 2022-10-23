@@ -6,13 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 import me.itanik.listofusers.R
 import me.itanik.listofusers.databinding.FragmentUserListBinding
 
 class UserListFragment : Fragment(R.layout.fragment_user_list) {
     private var _binding: FragmentUserListBinding? = null
     private val binding: FragmentUserListBinding get() = _binding!!
+    private val userListAdapter = UserListAdapter()
 
     private val viewModel: UserListViewModel by viewModels()
 
@@ -25,9 +30,21 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
         return _binding?.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                userListAdapter.submitList(viewModel.getUsers())
+            }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.detailsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_userListFragment_to_userDetailsFragment)
+        with(binding) {
+            detailsButton.setOnClickListener {
+                findNavController().navigate(R.id.action_userListFragment_to_userDetailsFragment)
+            }
+            userListRV.adapter = userListAdapter
         }
     }
 

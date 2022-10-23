@@ -7,7 +7,7 @@
 
     <!-- Screen specific dimens -->
     <dimen name="user_details_margin">@dimen/margin_default</dimen>
-    <dimen name="avatar_size">60dp</dimen>
+    <dimen name="avatar_size">50dp</dimen>
     <dimen name="indicator_size">6dp</dimen>
     <dimen name="left_chevron_size">20dp</dimen>
 </resources>
