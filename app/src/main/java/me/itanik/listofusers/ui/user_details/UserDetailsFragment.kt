@@ -1,5 +1,6 @@
 package me.itanik.listofusers.ui.user_details
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
@@ -19,7 +20,7 @@ import me.itanik.listofusers.ui.user_list.UserListAdapter
 import java.text.SimpleDateFormat
 import java.util.*
 
-class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
+class UserDetailsFragment : Fragment() {
     private var _binding: FragmentUserDetailsBinding? = null
     private val binding: FragmentUserDetailsBinding get() = _binding!!
     private val viewModel: UserDetailsViewModel by viewModels()
@@ -73,6 +74,7 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun formatDate(date: Date): String {
         return SimpleDateFormat().run {
             applyPattern("H:mm dd.MM.yy")

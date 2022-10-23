@@ -15,7 +15,7 @@ import me.itanik.listofusers.R
 import me.itanik.listofusers.databinding.FragmentUserListBinding
 import me.itanik.listofusers.ui.NavArguments
 
-class UserListFragment : Fragment(R.layout.fragment_user_list) {
+class UserListFragment : Fragment() {
     private var _binding: FragmentUserListBinding? = null
     private val binding: FragmentUserListBinding get() = _binding!!
     private val userListAdapter = UserListAdapter()
