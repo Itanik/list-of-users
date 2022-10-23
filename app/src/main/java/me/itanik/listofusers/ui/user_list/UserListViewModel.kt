@@ -12,9 +12,8 @@ class UserListViewModel : ViewModel() {
 
     init {
         viewModelScope.launch(IO) {
-            val response = apiClient.getUserList()
-            val json = response.body()?.string()
-            Log.d("UserListViewModel", json ?: "null")
+            val userList = apiClient.getUserList()
+            Log.d("UserListViewModel", userList[0].toString())
         }
     }
 }
