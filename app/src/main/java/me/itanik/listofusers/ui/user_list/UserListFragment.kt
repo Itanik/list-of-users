@@ -1,10 +1,11 @@
-package me.itanik.listofusers
+package me.itanik.listofusers.ui.user_list
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import me.itanik.listofusers.R
 
 class UserListFragment : Fragment(R.layout.fragment_user_list) {
 

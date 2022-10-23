@@ -1,4 +1,4 @@
-package me.itanik.listofusers
+package me.itanik.listofusers.ui.user_details
 
 import android.os.Bundle
 import android.text.Html
@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import me.itanik.listofusers.R
 
 class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
 

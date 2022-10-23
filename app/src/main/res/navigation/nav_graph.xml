@@ -5,7 +5,7 @@
     app:startDestination="@id/userListFragment">
     <fragment
         android:id="@+id/userListFragment"
-        android:name="me.itanik.listofusers.UserListFragment"
+        android:name="me.itanik.listofusers.ui.user_list.UserListFragment"
         android:label="userListFragment">
         <action
             android:id="@+id/action_userListFragment_to_userDetailsFragment"
@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/userDetailsFragment"
-        android:name="me.itanik.listofusers.UserDetailsFragment"
+        android:name="me.itanik.listofusers.ui.user_details.UserDetailsFragment"
         android:label="UserDetailsFragment">
         <action
             android:id="@+id/action_userDetailsFragment_self"
