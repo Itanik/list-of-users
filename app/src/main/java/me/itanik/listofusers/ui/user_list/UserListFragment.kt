@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import me.itanik.listofusers.R
 import me.itanik.listofusers.databinding.FragmentUserListBinding
+import me.itanik.listofusers.ui.NavArguments
 
 class UserListFragment : Fragment(R.layout.fragment_user_list) {
     private var _binding: FragmentUserListBinding? = null
@@ -42,7 +43,11 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             detailsButton.setOnClickListener {
-                findNavController().navigate(R.id.action_userListFragment_to_userDetailsFragment)
+                findNavController().navigate(
+                    R.id.action_userListFragment_to_userDetailsFragment,
+                    Bundle().apply {
+                        putInt(NavArguments.USER_ID, 0)
+                    })
             }
             userListRV.adapter = userListAdapter
         }
