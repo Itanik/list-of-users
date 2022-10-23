@@ -65,6 +65,8 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
                         EyeColor.BLUE -> R.drawable.ic_blue_circle
                     }
                 )
+                userLatLong.text =
+                    formatHtml(R.string.lat_lon_html_ph, "${user.latitude} ${user.longitude}")
                 friendsListRv.adapter = userListAdapter
                 userListAdapter.submitList(viewModel.getFriends(user))
             }

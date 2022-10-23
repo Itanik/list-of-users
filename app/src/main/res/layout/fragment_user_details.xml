@@ -141,6 +141,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="@dimen/margin_default"
+                    android:contentDescription="@string/cd_fruit_icon"
                     app:layout_constraintBottom_toBottomOf="@id/userFavoriteFruitHeadline"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.08"
@@ -148,8 +149,7 @@
                     app:layout_constraintStart_toEndOf="@id/userFavoriteFruitHeadline"
                     app:layout_constraintTop_toTopOf="@id/userFavoriteFruitHeadline"
                     app:layout_constraintWidth_percent="0.08"
-                    tools:src="@drawable/ic_banana"
-                    android:contentDescription="@string/cd_fruit_icon" />
+                    tools:src="@drawable/ic_banana" />
 
                 <TextView
                     android:id="@+id/userEyeColorHeadline"
@@ -171,6 +171,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="@dimen/margin_default"
+                    android:contentDescription="@string/cd_eye_color_icon"
                     app:layout_constraintBottom_toBottomOf="@id/userEyeColorHeadline"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.05"
@@ -178,11 +179,23 @@
                     app:layout_constraintStart_toEndOf="@id/userEyeColorHeadline"
                     app:layout_constraintTop_toTopOf="@id/userEyeColorHeadline"
                     app:layout_constraintWidth_percent="0.05"
-                    tools:src="@drawable/ic_brown_circle"
-                    android:contentDescription="@string/cd_eye_color_icon" />
+                    tools:src="@drawable/ic_brown_circle" />
 
                 <TextView
                     android:id="@+id/userRegistered"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/user_details_margin"
+                    app:layout_constraintBottom_toTopOf="@+id/userLatLong"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userEyeColorHeadline"
+                    tools:text="@string/registered_html_ph" />
+
+                <TextView
+                    android:id="@+id/userLatLong"
                     style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -191,8 +204,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/userEyeColorHeadline"
-                    tools:text="@string/registered_html_ph" />
+                    app:layout_constraintTop_toBottomOf="@+id/userRegistered"
+                    tools:text="@string/lat_lon_html_ph" />
 
                 <TextView
                     android:id="@+id/userAbout"
@@ -204,7 +217,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/userRegistered"
+                    app:layout_constraintTop_toBottomOf="@+id/userLatLong"
                     tools:text="@string/about_html_ph" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -214,8 +227,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_large"
-            android:layout_marginBottom="@dimen/margin_large"
             android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailsCard">

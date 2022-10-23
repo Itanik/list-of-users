@@ -8,7 +8,7 @@
     <string name="company_html_ph">&lt;b>Company:&lt;/b> %1$s</string>
     <string name="registered_html_ph">&lt;b>Registered:&lt;/b> %1$s</string>
     <string name="lat_lon_html_ph">&lt;b>Latitude, longitude:&lt;/b> %1$s</string>
-    <string name="about_html_ph">&lt;b>About:&lt;/b> %1$s</string>
+    <string name="about_html_ph">&lt;b>About:&lt;/b>&lt;br /> %1$s</string>
 
     <!-- Content description strings -->
     <string name="cd_fruit_icon">Fruit icon</string>
