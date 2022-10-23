@@ -10,12 +10,13 @@
     <string name="lat_lon_html_ph">&lt;b>Latitude, longitude:&lt;/b> %1$s</string>
     <string name="about_html_ph">&lt;b>About:&lt;/b> %1$s</string>
 
+    <!-- Content description strings -->
+    <string name="cd_fruit_icon">Fruit icon</string>
+    <string name="cd_eye_color_icon">Eye color icon</string>
+
     <string name="fav_fruit">Favorite fruit: </string>
     <string name="eye_color">Eye color: </string>
     <string name="friends">Friends</string>
     <string name="details">Details</string>
-
-    <!-- Content description strings -->
-    <string name="cd_fruit_icon">Fruit icon</string>
-    <string name="cd_eye_color_icon">Eye color icon</string>
+    <string name="users">Users:</string>
 </resources>
