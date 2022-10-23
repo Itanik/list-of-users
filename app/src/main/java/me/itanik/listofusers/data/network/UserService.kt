@@ -1,5 +1,6 @@
 package me.itanik.listofusers.data.network
 
+import com.google.gson.GsonBuilder
 import me.itanik.listofusers.data.network.dto.UserDto
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,7 +14,13 @@ interface UserService {
         fun create(): UserService {
             return Retrofit.Builder()
                 .baseUrl("https://firebasestorage.googleapis.com/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(
+                    GsonConverterFactory.create(
+                        GsonBuilder()
+                            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                            .create()
+                    )
+                )
                 .build()
                 .create(UserService::class.java)
         }

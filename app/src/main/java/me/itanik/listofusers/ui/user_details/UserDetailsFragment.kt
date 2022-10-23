@@ -16,6 +16,8 @@ import me.itanik.listofusers.data.network.dto.FavoriteFruit
 import me.itanik.listofusers.databinding.FragmentUserDetailsBinding
 import me.itanik.listofusers.ui.NavArguments
 import me.itanik.listofusers.ui.user_list.UserListAdapter
+import java.text.SimpleDateFormat
+import java.util.*
 
 class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
     private var _binding: FragmentUserDetailsBinding? = null
@@ -46,7 +48,8 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
                 userAge.text = formatHtml(R.string.age_html_ph, user.age.toString())
                 userAddress.text = formatHtml(R.string.address_html_ph, user.address)
                 userCompany.text = formatHtml(R.string.company_html_ph, user.company)
-                userRegistered.text = formatHtml(R.string.registered_html_ph, user.registered)
+                userRegistered.text =
+                    formatHtml(R.string.registered_html_ph, formatDate(user.registered))
                 userAbout.text = formatHtml(R.string.about_html_ph, user.about)
                 userFavoriteFruit.setImageResource(
                     when (user.favoriteFruit) {
@@ -65,6 +68,13 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
                 friendsListRv.adapter = userListAdapter
                 userListAdapter.submitList(viewModel.getFriends(user))
             }
+        }
+    }
+
+    private fun formatDate(date: Date): String {
+        return SimpleDateFormat().run {
+            applyPattern("H:mm dd.MM.yy")
+            format(date)
         }
     }
 

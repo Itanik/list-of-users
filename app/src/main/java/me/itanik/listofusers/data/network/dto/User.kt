@@ -1,6 +1,7 @@
 package me.itanik.listofusers.data.network.dto
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class UserDto(
     val id: Int,
@@ -13,7 +14,7 @@ data class UserDto(
     val company: String,
     val eyeColor: EyeColor,
     val favoriteFruit: FavoriteFruit,
-    val registered: String,
+    val registered: Date,
     val latitude: Double,
     val longitude: Double,
     val about: String,
