@@ -138,17 +138,15 @@
 
                 <ImageView
                     android:id="@+id/userFavoriteFruit"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="@dimen/margin_default"
                     android:contentDescription="@string/cd_fruit_icon"
                     app:layout_constraintBottom_toBottomOf="@id/userFavoriteFruitHeadline"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.08"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@id/userFavoriteFruitHeadline"
                     app:layout_constraintTop_toTopOf="@id/userFavoriteFruitHeadline"
-                    app:layout_constraintWidth_percent="0.08"
                     tools:src="@drawable/ic_banana" />
 
                 <TextView
@@ -168,17 +166,15 @@
 
                 <ImageView
                     android:id="@+id/userEyeColor"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginStart="@dimen/margin_default"
                     android:contentDescription="@string/cd_eye_color_icon"
                     app:layout_constraintBottom_toBottomOf="@id/userEyeColorHeadline"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.05"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@id/userEyeColorHeadline"
                     app:layout_constraintTop_toTopOf="@id/userEyeColorHeadline"
-                    app:layout_constraintWidth_percent="0.05"
                     tools:src="@drawable/ic_brown_circle" />
 
                 <TextView
