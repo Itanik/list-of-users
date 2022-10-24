@@ -2,9 +2,11 @@ package me.itanik.listofusers.ui.user_list
 
 import androidx.lifecycle.ViewModel
 import me.itanik.listofusers.data.network.UserService
+import javax.inject.Inject
 
-class UserListViewModel : ViewModel() {
-    private val apiClient = UserService.create()
+class UserListViewModel @Inject constructor(
+    private val userService: UserService
+) : ViewModel() {
 
-    suspend fun getUsers() = apiClient.getUserList()
+    suspend fun getUsers() = userService.getUserList()
 }

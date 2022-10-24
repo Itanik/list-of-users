@@ -12,13 +12,16 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import me.itanik.listofusers.R
+import me.itanik.listofusers.appComponent
 import me.itanik.listofusers.databinding.FragmentUserListBinding
 import me.itanik.listofusers.ui.NavArguments
 
 class UserListFragment : Fragment() {
     private var _binding: FragmentUserListBinding? = null
     private val binding: FragmentUserListBinding get() = _binding!!
-    private val viewModel: UserListViewModel by viewModels()
+    private val viewModel: UserListViewModel by viewModels {
+        requireContext().appComponent.userListViewModelProviderFactory
+    }
 
     private val userListAdapter = UserListAdapter { user ->
         if (user.isActive)

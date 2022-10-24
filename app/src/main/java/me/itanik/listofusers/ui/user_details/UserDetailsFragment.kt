@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import me.itanik.listofusers.R
+import me.itanik.listofusers.appComponent
 import me.itanik.listofusers.data.network.dto.EyeColor
 import me.itanik.listofusers.data.network.dto.FavoriteFruit
 import me.itanik.listofusers.databinding.FragmentUserDetailsBinding
@@ -26,7 +27,9 @@ import java.util.*
 class UserDetailsFragment : Fragment() {
     private var _binding: FragmentUserDetailsBinding? = null
     private val binding: FragmentUserDetailsBinding get() = _binding!!
-    private val viewModel: UserDetailsViewModel by viewModels()
+    private val viewModel: UserDetailsViewModel by viewModels {
+        requireContext().appComponent.userDetailsViewModelProviderFactory
+    }
 
     private val userId: Int
         get() = arguments?.getInt(NavArguments.USER_ID)
