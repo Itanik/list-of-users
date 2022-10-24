@@ -83,6 +83,9 @@ class UserDetailsFragment : Fragment() {
                 )
                 userLatLong.text =
                     formatHtml(R.string.lat_lon_html_ph, "${user.latitude} ${user.longitude}")
+                userLatLong.setOnClickListener {
+                    showMap(user.latitude, user.longitude)
+                }
                 friendsListRv.adapter = userListAdapter
                 userListAdapter.submitList(viewModel.getFriends(user))
             }
@@ -102,6 +105,15 @@ class UserDetailsFragment : Fragment() {
     private fun dialPhoneNumber(phoneNumber: String) {
         val intent = Intent(Intent.ACTION_DIAL).apply {
             data = Uri.fromParts("tel", phoneNumber, null)
+        }
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(intent)
+        }
+    }
+
+    private fun showMap(latitude: Double, longitude: Double) {
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse("geo:$latitude,$longitude")
         }
         if (intent.resolveActivity(requireActivity().packageManager) != null) {
             startActivity(intent)
