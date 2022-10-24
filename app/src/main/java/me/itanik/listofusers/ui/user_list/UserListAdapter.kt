@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import me.itanik.listofusers.R
-import me.itanik.listofusers.data.network.dto.UserDto
+import me.itanik.listofusers.data.repository.User
 import me.itanik.listofusers.databinding.ItemUserListBinding
 
-class UserListAdapter(private val onClickItem: (UserDto) -> Unit) :
-    ListAdapter<UserDto, UserItemViewHolder>(UserDiffCallback) {
+class UserListAdapter(private val onClickItem: (User) -> Unit) :
+    ListAdapter<User, UserItemViewHolder>(UserDiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserItemViewHolder {
         return UserItemViewHolder(
             ItemUserListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,7 +26,7 @@ class UserListAdapter(private val onClickItem: (UserDto) -> Unit) :
 }
 
 class UserItemViewHolder(private val binding: ItemUserListBinding) : ViewHolder(binding.root) {
-    fun bind(user: UserDto) {
+    fun bind(user: User) {
         with(binding) {
             userName.text = user.name
             userEmail.text = user.email
@@ -41,17 +41,17 @@ class UserItemViewHolder(private val binding: ItemUserListBinding) : ViewHolder(
         }
     }
 
-    fun addOnClickListener(user: UserDto, onClickItem: (UserDto) -> Unit) {
+    fun addOnClickListener(user: User, onClickItem: (User) -> Unit) {
         binding.root.setOnClickListener { onClickItem(user) }
     }
 }
 
-private object UserDiffCallback : DiffUtil.ItemCallback<UserDto>() {
-    override fun areItemsTheSame(oldItem: UserDto, newItem: UserDto): Boolean {
+private object UserDiffCallback : DiffUtil.ItemCallback<User>() {
+    override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: UserDto, newItem: UserDto): Boolean {
+    override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
         return oldItem == newItem
     }
 }

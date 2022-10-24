@@ -54,7 +54,11 @@ class UserListFragment : Fragment() {
         with(binding) {
             userListRV.adapter = userListAdapter
             swipeRefresh.setOnRefreshListener {
-                swipeRefresh.isRefreshing = false
+                lifecycleScope.launch {
+                    viewModel.updateUsers()
+                    userListAdapter.submitList(viewModel.getUsers())
+                    swipeRefresh.isRefreshing = false
+                }
             }
         }
     }
