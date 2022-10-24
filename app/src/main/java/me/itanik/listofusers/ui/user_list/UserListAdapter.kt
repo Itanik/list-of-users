@@ -10,7 +10,8 @@ import me.itanik.listofusers.R
 import me.itanik.listofusers.data.network.dto.UserDto
 import me.itanik.listofusers.databinding.ItemUserListBinding
 
-class UserListAdapter : ListAdapter<UserDto, UserItemViewHolder>(UserDiffCallback) {
+class UserListAdapter(private val onClickItem: (UserDto) -> Unit) :
+    ListAdapter<UserDto, UserItemViewHolder>(UserDiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserItemViewHolder {
         return UserItemViewHolder(
             ItemUserListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -18,7 +19,9 @@ class UserListAdapter : ListAdapter<UserDto, UserItemViewHolder>(UserDiffCallbac
     }
 
     override fun onBindViewHolder(holder: UserItemViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val user = getItem(position)
+        holder.bind(user)
+        holder.addOnClickListener(user, onClickItem)
     }
 }
 
@@ -36,6 +39,10 @@ class UserItemViewHolder(private val binding: ItemUserListBinding) : ViewHolder(
             )
 
         }
+    }
+
+    fun addOnClickListener(user: UserDto, onClickItem: (UserDto) -> Unit) {
+        binding.root.setOnClickListener { onClickItem(user) }
     }
 }
 

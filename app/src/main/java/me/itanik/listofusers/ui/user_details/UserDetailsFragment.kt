@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import me.itanik.listofusers.R
 import me.itanik.listofusers.data.network.dto.EyeColor
@@ -24,11 +25,17 @@ class UserDetailsFragment : Fragment() {
     private var _binding: FragmentUserDetailsBinding? = null
     private val binding: FragmentUserDetailsBinding get() = _binding!!
     private val viewModel: UserDetailsViewModel by viewModels()
+
     private val userId: Int
         get() = arguments?.getInt(NavArguments.USER_ID)
             ?: throw Exception("User id is not specified")
 
-    private val userListAdapter = UserListAdapter()
+    private val userListAdapter = UserListAdapter { user ->
+        if (user.isActive)
+            findNavController().navigate(R.id.action_userDetailsFragment_self, Bundle().apply {
+                putInt(NavArguments.USER_ID, user.id)
+            })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

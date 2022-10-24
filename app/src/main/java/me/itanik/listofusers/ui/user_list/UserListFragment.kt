@@ -18,9 +18,16 @@ import me.itanik.listofusers.ui.NavArguments
 class UserListFragment : Fragment() {
     private var _binding: FragmentUserListBinding? = null
     private val binding: FragmentUserListBinding get() = _binding!!
-    private val userListAdapter = UserListAdapter()
-
     private val viewModel: UserListViewModel by viewModels()
+
+    private val userListAdapter = UserListAdapter { user ->
+        if (user.isActive)
+            findNavController().navigate(
+                R.id.action_userListFragment_to_userDetailsFragment,
+                Bundle().apply {
+                    putInt(NavArguments.USER_ID, user.id)
+                })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,16 +48,7 @@ class UserListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding) {
-            detailsButton.setOnClickListener {
-                findNavController().navigate(
-                    R.id.action_userListFragment_to_userDetailsFragment,
-                    Bundle().apply {
-                        putInt(NavArguments.USER_ID, 0)
-                    })
-            }
-            userListRV.adapter = userListAdapter
-        }
+        binding.userListRV.adapter = userListAdapter
     }
 
     override fun onDestroyView() {

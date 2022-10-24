@@ -17,16 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/detailsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Details"
-        android:layout_marginStart="@dimen/margin_large"
-        app:layout_constraintStart_toEndOf="@id/userListHeadline"
-        app:layout_constraintTop_toTopOf="@id/userListHeadline"
-        app:layout_constraintBottom_toBottomOf="@id/userListHeadline" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userListRV"
         android:layout_width="0dp"
