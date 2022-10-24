@@ -3,6 +3,7 @@ package me.itanik.listofusers.data.persistence.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import me.itanik.listofusers.data.persistence.entity.UserEntity
 
@@ -17,7 +18,7 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE id = :userId")
     suspend fun getById(userId: Int): UserEntity
 
-    @Insert
+    @Insert(onConflict = REPLACE)
     suspend fun insertAll(users: List<UserEntity>)
 
     @Delete

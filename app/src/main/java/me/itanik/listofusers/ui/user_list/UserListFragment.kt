@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import me.itanik.listofusers.R
 import me.itanik.listofusers.appComponent
@@ -32,6 +34,11 @@ class UserListFragment : Fragment() {
                 })
     }
 
+    private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
+        Toast.makeText(requireContext(), "Unable to update user list", Toast.LENGTH_SHORT).show()
+        binding.swipeRefresh.isRefreshing = false
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,7 +50,7 @@ class UserListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lifecycleScope.launch {
+        lifecycleScope.launch(exceptionHandler) {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 userListAdapter.submitList(viewModel.getUsers())
             }
@@ -54,7 +61,7 @@ class UserListFragment : Fragment() {
         with(binding) {
             userListRV.adapter = userListAdapter
             swipeRefresh.setOnRefreshListener {
-                lifecycleScope.launch {
+                lifecycleScope.launch(exceptionHandler) {
                     viewModel.updateUsers()
                     userListAdapter.submitList(viewModel.getUsers())
                     swipeRefresh.isRefreshing = false
