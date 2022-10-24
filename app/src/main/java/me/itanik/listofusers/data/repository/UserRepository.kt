@@ -39,17 +39,21 @@ class UserRepositoryImpl @Inject constructor(
     private val userService: UserService
 ) : UserRepository {
     override suspend fun getUsers(): List<User> {
-        enshureUpdated()
-        return userDao.getAll().map { it.toUser() }
+        var result = userDao.getAll()
+        if (result.isEmpty()) {
+            updateData()
+            result = userDao.getAll()
+        }
+        return result.map { it.toUser() }
     }
 
     override suspend fun getUser(userId: Int): User {
-        enshureUpdated()
+        ensureUpdated()
         return userDao.getById(userId).toUser()
     }
 
     override suspend fun getUsersByIds(userIds: List<Int>): List<User> {
-        enshureUpdated()
+        ensureUpdated()
         return userDao.getAllByIds(userIds.toIntArray()).map { it.toUser() }
     }
 
@@ -58,7 +62,7 @@ class UserRepositoryImpl @Inject constructor(
         userDao.insertAll(users)
     }
 
-    private suspend fun enshureUpdated() {
+    private suspend fun ensureUpdated() {
         if (userDao.getAll().isEmpty())
             updateData()
     }
