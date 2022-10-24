@@ -51,7 +51,12 @@ class UserListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.userListRV.adapter = userListAdapter
+        with(binding) {
+            userListRV.adapter = userListAdapter
+            swipeRefresh.setOnRefreshListener {
+                swipeRefresh.isRefreshing = false
+            }
+        }
     }
 
     override fun onDestroyView() {
