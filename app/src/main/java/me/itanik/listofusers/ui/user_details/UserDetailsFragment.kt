@@ -1,6 +1,8 @@
 package me.itanik.listofusers.ui.user_details
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
@@ -52,6 +54,9 @@ class UserDetailsFragment : Fragment() {
             with(binding) {
                 userName.text = user.name
                 userEmail.text = user.email
+                userEmail.setOnClickListener {
+                    composeEmail(user.email)
+                }
                 userPhone.text = formatHtml(R.string.phone_html_ph, user.phone)
                 userAge.text = formatHtml(R.string.age_html_ph, user.age.toString())
                 userAddress.text = formatHtml(R.string.address_html_ph, user.address)
@@ -78,6 +83,16 @@ class UserDetailsFragment : Fragment() {
                 friendsListRv.adapter = userListAdapter
                 userListAdapter.submitList(viewModel.getFriends(user))
             }
+        }
+    }
+
+    private fun composeEmail(address: String) {
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(address))
+        }
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(intent)
         }
     }
 
