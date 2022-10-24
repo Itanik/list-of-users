@@ -15,10 +15,10 @@ interface UserDao {
     fun getAllByIds(userIds: IntArray): List<UserEntity>
 
     @Query("SELECT * FROM users WHERE id = :userId")
-    fun getById(userId: Int): List<UserEntity>
+    fun getById(userId: Int): UserEntity
 
     @Insert
-    fun insertAll(vararg users: UserEntity)
+    fun insertAll(users: List<UserEntity>)
 
     @Delete
     fun delete(user: UserEntity)
