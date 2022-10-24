@@ -58,6 +58,9 @@ class UserDetailsFragment : Fragment() {
                     composeEmail(user.email)
                 }
                 userPhone.text = formatHtml(R.string.phone_html_ph, user.phone)
+                userPhone.setOnClickListener {
+                    dialPhoneNumber(user.phone)
+                }
                 userAge.text = formatHtml(R.string.age_html_ph, user.age.toString())
                 userAddress.text = formatHtml(R.string.address_html_ph, user.address)
                 userCompany.text = formatHtml(R.string.company_html_ph, user.company)
@@ -90,6 +93,15 @@ class UserDetailsFragment : Fragment() {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, arrayOf(address))
+        }
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(intent)
+        }
+    }
+
+    private fun dialPhoneNumber(phoneNumber: String) {
+        val intent = Intent(Intent.ACTION_DIAL).apply {
+            data = Uri.fromParts("tel", phoneNumber, null)
         }
         if (intent.resolveActivity(requireActivity().packageManager) != null) {
             startActivity(intent)
